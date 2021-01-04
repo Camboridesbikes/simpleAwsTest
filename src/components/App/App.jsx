@@ -1,17 +1,14 @@
 import React, { Component } from 'react'
-import { withAuthenticator } from 'aws-amplify-react'
+import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react'
 
-class App extends Component {
-    
-    
-    render() {
+const App = () => {
         return (
             <div>
                 <p>Hello World from a component</p>
+                <AmplifySignOut/>
             </div>
         )
     }
-}
 
 export default withAuthenticator(App, {
     usernameAttributes: 'email',
@@ -19,4 +16,4 @@ export default withAuthenticator(App, {
         hiddenDefaults:["phone_number"],
         signUpFields: [{key: 'name', label: 'Name', required: true}]
     }
-})
+});
