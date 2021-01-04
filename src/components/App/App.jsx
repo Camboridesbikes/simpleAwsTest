@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
+import { withAuthenticator } from 'aws-amplify-react'
 
-export default class App extends Component {
+class App extends Component {
     
     
     render() {
@@ -11,3 +12,11 @@ export default class App extends Component {
         )
     }
 }
+
+export default withAuthenticator(App, {
+    usernameAttributes: 'email',
+    signUpConfig: {
+        hiddenDefaults:["phone_number"],
+        signUpFields: [{key: 'name', label: 'Name', required: true}]
+    }
+})
